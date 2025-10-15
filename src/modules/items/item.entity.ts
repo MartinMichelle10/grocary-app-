@@ -4,11 +4,11 @@ import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateCol
 @Index(['user_id'])
 @Index(['name'])
 export class Item {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-  @Column('uuid')
-  user_id: string;
+  @Column('int')
+  user_id: number;
 
   @Column({ length: 255 })
   name: string;
