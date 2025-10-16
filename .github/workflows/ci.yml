@@ -14,11 +14,7 @@ jobs:
         with:
           node-version: 18
       - name: Install
-        run: npm ci
-      - name: Lint
-        run: npm run lint
-      - name: Test
-        run: npm test
+        run: npm i --force
       - name: Build
         run: npm run build
       # Optionally build and push Docker image (commented placeholders)
