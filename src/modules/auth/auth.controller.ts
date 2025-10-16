@@ -12,8 +12,7 @@ export class AuthController {
   @Post('register')
   @ApiOperation({ summary: 'Register a user' })
   async register(@Body() body: RegisterDto) {
-    const result = await this.svc.register(body.email, body.password, body.name);
-    return { id: result.id, email: result.email, name: result.name };
+    return this.svc.register(body.email, body.password, body.name);
   }
 
   @Post('login')

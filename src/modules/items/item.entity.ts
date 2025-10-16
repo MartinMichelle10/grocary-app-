@@ -1,27 +1,27 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, Index } from 'typeorm';
 
 @Entity({ name: 'items' })
-@Index(['user_id'])
+@Index(['userId'])
 @Index(['name'])
 export class Item {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('int')
-  user_id: number;
+  @Column('int', { name: 'user_id' })
+  userId: number;
 
-  @Column({ length: 255 })
+  @Column({ length: 255, name: 'name' })
   name: string;
 
-  @Column('int')
+  @Column('int', { name: 'quantity' })
   quantity: number;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, name: 'store' })
   store?: string;
 
-  @CreateDateColumn({ type: 'timestamptz' })
-  created_at: Date;
+  @CreateDateColumn({ type: 'timestamptz', name: 'created_at' })
+  createdAt: Date;
 
-  @UpdateDateColumn({ type: 'timestamptz' })
-  updated_at: Date;
+  @UpdateDateColumn({ type: 'timestamptz', name: 'updated_at' })
+  updatedAt: Date;
 }

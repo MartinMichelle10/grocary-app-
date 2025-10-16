@@ -19,7 +19,7 @@ export class UsersRepository {
     return this.repo.findOne({ where: { email } });
   }
 
-  findById(id: string) {
+  findById(id: number) {
     return this.repo.findOne({ where: { id } });
   }
 }

@@ -24,7 +24,7 @@ export class UsersService {
     return match ? user : null;
   }
 
-  async findById(id: string) {
+  async findById(id: number) {
     const user = await this.repo.findById(id);
     if (!user) throw new NotFoundException('User not found');
     return user;

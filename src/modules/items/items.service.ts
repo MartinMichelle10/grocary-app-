@@ -7,23 +7,23 @@ import { UpdateItemDto } from './dto/update-item.dto';
 export class ItemsService {
   constructor(private repo: ItemsRepository) {}
 
-  async create(userId: string, dto: CreateItemDto) {
-    const item = this.repo.create({ ...dto, user_id: userId });
+  async create(userId: number, dto: CreateItemDto) {
+    const item = this.repo.create({ ...dto, userId });
     return this.repo.save(item);
   }
 
-  async findAll(userId: string) {
+  async findAll(userId: number) {
     return this.repo.findByUser(userId);
   }
 
-  async update(userId: string, id: string, dto: UpdateItemDto) {
+  async update(userId: number, id: number, dto: UpdateItemDto) {
     const item = await this.repo.findByIdAndUser(id, userId);
     if (!item) throw new NotFoundException('Item not found');
     Object.assign(item, dto);
     return this.repo.save(item);
   }
 
-  async remove(userId: string, id: string) {
+  async remove(userId: number, id: number) {
     const item = await this.repo.findByIdAndUser(id, userId);
     if (!item) throw new NotFoundException('Item not found');
     await this.repo.delete(item.id);

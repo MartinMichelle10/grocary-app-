@@ -8,8 +8,7 @@ export class AuthService {
   constructor(private users: UsersService, private jwt: JwtService, private cfg: ConfigService) {}
 
   async register(email: string, password: string, name?: string) {
-    const user = await this.users.register(email, password, name);
-    return { id: user.id, email: user.email, name: user.name };
+    return this.users.register(email, password, name);
   }
 
   async login(email: string, password: string) {

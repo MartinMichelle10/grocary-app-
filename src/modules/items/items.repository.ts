@@ -13,13 +13,13 @@ export class ItemsRepository {
   save(item: Item) {
     return this.repo.save(item);
   }
-  findByUser(userId: string) {
-    return this.repo.find({ where: { user_id: userId }, order: { created_at: 'DESC' } });
+  findByUser(userId: number) {
+    return this.repo.find({ where: { userId }, order: { createdAt: 'DESC' } });
   }
-  findByIdAndUser(id: string, userId: string) {
-    return this.repo.findOne({ where: { id, user_id: userId } });
+  findByIdAndUser(id: number, userId: number) {
+    return this.repo.findOne({ where: { id, userId } });
   }
-  delete(id: string) {
+  delete(id: number) {
     return this.repo.delete(id);
   }
 }

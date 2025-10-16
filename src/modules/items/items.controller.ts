@@ -30,7 +30,7 @@ export class ItemsController {
   @ApiBearerAuth()
   @Put('items/:id')
   @ApiOperation({ summary: 'Update a grocery item' })
-  async update(@Req() req: any, @Param('id') id: string, @Body() dto: UpdateItemDto) {
+  async update(@Req() req: any, @Param('id') id: number, @Body() dto: UpdateItemDto) {
     return this.svc.update(req.user.id, id, dto);
   }
 
@@ -39,7 +39,7 @@ export class ItemsController {
   @Delete('items/:id')
   @HttpCode(204)
   @ApiOperation({ summary: 'Delete a grocery item' })
-  async remove(@Req() req: any, @Param('id') id: string) {
+  async remove(@Req() req: any, @Param('id') id: number) {
     await this.svc.remove(req.user.id, id);
     return;
   }
